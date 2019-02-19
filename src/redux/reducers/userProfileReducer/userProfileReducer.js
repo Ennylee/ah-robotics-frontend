@@ -3,17 +3,27 @@ import {
   PROFILE_ERROR,
   PROFILE_PATCH,
   PROFILE_LOADING,
-  PROFILE_STATUS,
   PROFILE_FOLLOWING,
   PROFILE_FOLLOWERS,
-} from './actions/userProfileActions/types';
+} from '../../actions/userProfileActions/types';
 
 const initialState = {
-    profileData: {},
-    profileError: {},
-    profileUpdate: false,
-    profileLoading: false,
-    profileFollow: 0,
-    profileFollowing: 0,
-    profileStatus: {},
+  profileData: {},
+  Error: {},
+  profileUpdate: false,
+  isLoading: false,
+  Followers: 0,
+  Following: 0,
 };
+
+const userProfileReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case PROFILE_DATA: {
+      return { ...state, profileLoading: true };
+    }
+    default:
+      return state;
+  }
+};
+
+export default userProfileReducer;
