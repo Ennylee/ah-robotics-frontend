@@ -7,38 +7,33 @@ import {
     PROFILE_FOLLOWING,
     PROFILE_FOLLOWERS,
   } from './types';
-  
+
     export const profileData = payload => ({
         type: PROFILE_DATA,
         payload,
     });
-    
-    export const profileError = payload => ({
+
+    export const Error = payload => ({
         type: PROFILE_ERROR,
         payload,
     });
-    
+
     export const profileUpdate = payload => ({
         type: PROFILE_PATCH,
         payload,
     });
-    
-    export const profileLoading = payload => ({
+
+    export const isLoading = payload => ({
         type: PROFILE_LOADING,
         payload,
     });
-    
-    export const profileApiRequest = payload => ({
-        type: PROFILE_STATUS,
-        payload,
-      });
 
-    export const profileFollow = payload => ({
+    export const Following = payload => ({
         type: PROFILE_FOLLOWING,
         payload,
     });
 
-    export const profileFollowers = payload => ({
+    export const Followers = payload => ({
         type: PROFILE_FOLLOWERS,
         payload,
       });
