@@ -23,6 +23,30 @@ describe('resetPassword reducer tests', () => {
     expect(userProfileReducer(null, {
       type: PROFILE_DATA_SUCCESS,
       payload: {},
-    })).toEqual({isLoading: false});
+    })).toEqual({ isLoading: false });
+  });
+  it('it should show error on profile submit', () => {
+    expect(userProfileReducer(null, {
+      type: PROFILE_ERROR,
+      payload: {},
+    })).toEqual({ isLoading: true, errors: {} });
+  });
+  it('it should show error on profile submit', () => {
+    expect(userProfileReducer(null, {
+      type: PROFILE_PATCH_START,
+      payload: {},
+    })).toEqual({ "isLoading": true, "profileData": {},  });
+  });
+  it('it should show error on profile submit', () => {
+    expect(userProfileReducer(null, {
+      type: PROFILE_PATCH_SUCCESS,
+      payload: {},
+    })).toEqual({ isLoading: false });
+  });
+  it('it should show error on profile submit', () => {
+    expect(userProfileReducer(null, {
+      type: PROFILE_PATCH_ERROR,
+      payload: {},
+    })).toEqual({ isLoading: true, errors: {} });
   });
 });
