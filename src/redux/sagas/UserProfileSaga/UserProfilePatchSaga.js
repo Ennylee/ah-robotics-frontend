@@ -2,33 +2,34 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import * as types from '../../actions/userProfileActions/types';
 
-function* userProfileSaga(payload) {
+function* userProfilePatchSaga(payload) {
   const payloadData = payload.payload;
   const { username } = payloadData;
   const { token } = payloadData;
+  const { profileForm } = payloadData;
   const config = {
     headers: {
       Authorization: `token ${token}`,
     },
   };
   try {
-    const response = yield call(axios.get, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, config);
+    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, profileForm, config);
     yield put({
-      type: types.PROFILE_DATA_SUCCESS,
+      type: types.PROFILE_PATCH_SUCCESS,
       payload: response.data,
     });
   } catch (err) {
     yield put({
-      type: types.PROFILE_ERROR,
+      type: types.PROFILE_PATCH_ERROR,
       payload: { errors: err.response },
     });
   }
 }
 
-function* watchuserProfile() {
-  yield takeEvery(
-    types.PROFILE_DATA, userProfileSaga,
-);
-}
+function* watchuserProfilePatch() {
+    yield takeEvery(
+      types.PROFILE_PATCH_START, userProfilePatchSaga,
+  );
+  }
 
-export default watchuserProfile;
+  export default watchuserProfilePatch;

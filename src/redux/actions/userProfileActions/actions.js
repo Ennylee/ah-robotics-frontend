@@ -4,10 +4,10 @@ import {
     PROFILE_PATCH_START,
   } from './types';
 
-    export const profileData = payload => {
-        return {type: PROFILE_DATA,
-        payload,}
-    };
+    export const profileData = payload => ({
+ type: PROFILE_DATA,
+        payload,
+});
 
     export const Error = payload => ({
         type: PROFILE_ERROR,
@@ -18,4 +18,3 @@ import {
         type: PROFILE_PATCH_START,
         payload,
     });
-

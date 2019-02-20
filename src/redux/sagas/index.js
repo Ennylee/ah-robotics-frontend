@@ -9,6 +9,6 @@ export default function* rootSaga() {
     fork(loginWatcher),
     fork(watchRegister),
     fork(watchVerify),
-    fork(watchuserProfile)
+    fork(watchuserProfile),
   ]);
 }
