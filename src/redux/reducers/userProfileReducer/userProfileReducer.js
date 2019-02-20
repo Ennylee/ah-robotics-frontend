@@ -25,16 +25,16 @@ const userProfileReducer = (state = initialState, action) => {
       return { ...action.payload, isLoading: false };
     }
     case PROFILE_ERROR: {
-      return { ...state, isLoading: true, errors: action.payload };
+      return { ...state, isLoading: true, errors: {} };
     }
     case PROFILE_PATCH_START: {
-      return { ...state, profileUpdate: action.payload };
+      return { ...state, profileData: action.payload, isLoading: true };
     }
     case PROFILE_PATCH_SUCCESS: {
       return { ...action.payload, isLoading: false };
     }
     case PROFILE_PATCH_ERROR: {
-      return { ...state, isLoading: true, errors: action.payload };
+      return { ...state, isLoading: true, errors: {} };
     }
         default:
       return state;
