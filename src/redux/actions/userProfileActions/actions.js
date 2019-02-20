@@ -1,9 +1,7 @@
 import {
     PROFILE_DATA,
     PROFILE_ERROR,
-    PROFILE_PATCH,
-    PROFILE_FOLLOWING,
-    PROFILE_FOLLOWERS,
+    PROFILE_PATCH_START,
   } from './types';
 
     export const profileData = payload => {
@@ -17,16 +15,7 @@ import {
     });
 
     export const profileUpdate = payload => ({
-        type: PROFILE_PATCH,
+        type: PROFILE_PATCH_START,
         payload,
     });
 
-    export const Following = payload => ({
-        type: PROFILE_FOLLOWING,
-        payload,
-    });
-
-    export const Followers = payload => ({
-        type: PROFILE_FOLLOWERS,
-        payload,
-      });
