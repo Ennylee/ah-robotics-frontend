@@ -1,10 +1,10 @@
 import {
   PROFILE_DATA,
   PROFILE_ERROR,
-  PROFILE_PATCH,
+  PROFILE_PATCH_START,
+  PROFILE_PATCH_SUCCESS,
+  PROFILE_PATCH_ERROR,
   PROFILE_DATA_SUCCESS,
-  PROFILE_FOLLOWING,
-  PROFILE_FOLLOWERS,
 } from '../../actions/userProfileActions/types';
 
 const initialState = {
@@ -27,16 +27,16 @@ const userProfileReducer = (state = initialState, action) => {
     case PROFILE_ERROR: {
       return { ...state, isLoading: true, errors: action.payload };
     }
-    case PROFILE_PATCH: {
+    case PROFILE_PATCH_START: {
       return { ...state, profileUpdate: action.payload };
     }
-    case PROFILE_FOLLOWING: {
-      return { ...state, Following: action.payload };
+    case PROFILE_PATCH_SUCCESS: {
+      return { ...action.payload, isLoading: false };
     }
-    case PROFILE_FOLLOWERS: {
-      return { ...state, Followers: action.payload };
+    case PROFILE_PATCH_ERROR: {
+      return { ...state, isLoading: true, errors: action.payload };
     }
-    default:
+        default:
       return state;
   }
 };
