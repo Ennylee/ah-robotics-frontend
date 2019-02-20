@@ -2,7 +2,7 @@ import {
   PROFILE_DATA,
   PROFILE_ERROR,
   PROFILE_PATCH,
-  PROFILE_LOADING,
+  PROFILE_DATA_SUCCESS,
   PROFILE_FOLLOWING,
   PROFILE_FOLLOWERS,
 } from '../../actions/userProfileActions/types';
@@ -19,16 +19,16 @@ const initialState = {
 const userProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case PROFILE_DATA: {
-      return { ...state, profileData: action.payload };
+      return { ...state, profileData: action.payload, isLoading: true };
+    }
+    case PROFILE_DATA_SUCCESS: {
+      return { ...action.payload, isLoading: false };
     }
     case PROFILE_ERROR: {
       return { ...state, isLoading: true, errors: action.payload };
     }
     case PROFILE_PATCH: {
       return { ...state, profileUpdate: action.payload };
-    }
-    case PROFILE_LOADING: {
-      return { ...action.payload, isLoading: false };
     }
     case PROFILE_FOLLOWING: {
       return { ...state, Following: action.payload };

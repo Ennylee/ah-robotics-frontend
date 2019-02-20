@@ -2,16 +2,14 @@ import {
     PROFILE_DATA,
     PROFILE_ERROR,
     PROFILE_PATCH,
-    PROFILE_LOADING,
-    PROFILE_STATUS,
     PROFILE_FOLLOWING,
     PROFILE_FOLLOWERS,
   } from './types';
 
-    export const profileData = payload => ({
-        type: PROFILE_DATA,
-        payload,
-    });
+    export const profileData = payload => {
+        return {type: PROFILE_DATA,
+        payload,}
+    };
 
     export const Error = payload => ({
         type: PROFILE_ERROR,
@@ -20,11 +18,6 @@ import {
 
     export const profileUpdate = payload => ({
         type: PROFILE_PATCH,
-        payload,
-    });
-
-    export const isLoading = payload => ({
-        type: PROFILE_LOADING,
         payload,
     });
 

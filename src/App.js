@@ -7,6 +7,7 @@ import LoginView from './views/LoginView';
 import Error from './views/ErrorView';
 import NavigationComponent from './views/NavigationVew';
 import VerifyRegistrationView from './views/VerifyRegistrationView/index';
+import ProfileView from './views/UserProfileView';
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => (
         <Route path="/" component={HomeView} exact />
         <Route path="/login" component={LoginView} exact />
         <Route path="/register" component={RegisterView} />
+        <Route path="/profiles" component={ProfileView} />
         <Route path="/verify/:token" component={VerifyRegistrationView} />
         <Route component={Error} />
       </Switch>
