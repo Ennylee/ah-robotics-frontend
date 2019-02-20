@@ -1,7 +1,7 @@
 import {
   ADD_COMMENT_START,
   ADD_COMMENT_SUCCESS,
-  ADD_COMMENT_FAIL, GET_COMMENTS_SUCCESS, GET_COMMENTS_FAIL,
+  ADD_COMMENT_FAIL,
 } from '../../actions/CommentActions/types';
 
 const initialState = {
@@ -15,17 +15,17 @@ const addCommentReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT_START: {
       return {
-        ...state, isCommenting: true,
+        ...state, ...action.payload, isCommenting: true,
       };
     }
     case ADD_COMMENT_SUCCESS: {
       return {
-        ...state, isCommenting: false,
+        ...state, ...action.payload, isCommenting: false,
       };
     }
     case ADD_COMMENT_FAIL: {
       return {
-        ...state, isCommenting: false,
+        ...state, ...action.payload, isCommenting: false,
       };
     }
     default:

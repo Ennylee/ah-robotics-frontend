@@ -4,7 +4,10 @@ import * as types from '../../actions/RegisterActions/types';
 
 function* registerSaga({ payload }) {
   try {
-    const response = yield call(axios.post, 'https://ah-robotics-staging.herokuapp.com/api/v1/users/', { user: payload });
+    const response = yield call(
+      axios.post,
+      'https://ah-robotics-staging.herokuapp.com/api/v1/users/', { user: payload },
+);
     yield put({
       type: types.REGISTER_SUCCESS,
       payload: { user: response.data.user },

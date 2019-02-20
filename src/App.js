@@ -10,8 +10,6 @@ import NavigationComponent from './views/NavigationView';
 import NewPasswordView from './views/NewPasswordView';
 import VerifyRegistrationView from './views/VerifyRegistrationView/index';
 import AddCommentView from './views/CommentViews/AddCommentView';
-// import AllCommentsView from './views/CommentViews/AllCommentsView';
-
 
 class App extends Component {
   render() {
@@ -26,7 +24,7 @@ class App extends Component {
             <Route path="/verify/:token" component={VerifyRegistrationView} />
             <Route path="/resetpassword" component={ResetPasswordView} />
             <Route path="/reset_password/:token" component={NewPasswordView} />
-            <Route path="/singlearticle" component={AddCommentView} />
+            <Route path="/demo-article/comments" component={AddCommentView} />
             <Route component={Error} />
 
           </Switch>
@@ -35,21 +33,5 @@ class App extends Component {
     );
   }
 }
-
-// const App = () => (
-//   <BrowserRouter>
-//     <div>
-//       <NavigationComponent />
-//       <Switch>
-//         <Route path="/" component={HomeView} exact />
-//         <Route path="/login" component={LoginView} exact />
-//         <Route path="/register" component={RegisterView} />
-//         <Route path="/verify/:token" component={VerifyRegistrationView} />
-//         <Route path="/singlearticle" component={AddCommentView} />
-//         <Route component={Error} />
-//       </Switch>
-//     </div>
-//   </BrowserRouter>
-// );
 
 export default App;

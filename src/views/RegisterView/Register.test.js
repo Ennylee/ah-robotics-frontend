@@ -10,15 +10,25 @@ function setup() {
   const registerSuccess = {
     register: {},
   };
+  const handleSubmit = jest.fn();
+  const loading = false;
+  const errors = {};
+  const onChange = jest.fn();
 
-  const wrapper = shallow(<RegisterComponent registerSuccess={registerSuccess} />);
+  const wrapper = shallow(
+    <RegisterComponent
+      registerSuccess={registerSuccess}
+      onChange={onChange}
+      handleSubmit={handleSubmit}
+      errors={errors}
+      loading={loading}
+    />,
+);
 
   return {
-    // props,
     wrapper,
   };
 }
-
 
 describe('Register View', () => {
   it('should render self and subcomponents', () => {

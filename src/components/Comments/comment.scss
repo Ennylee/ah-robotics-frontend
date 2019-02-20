@@ -1,0 +1,44 @@
+$primary-color: #00d0a0;
+#comment-button {
+  background-color: $primary-color !important;
+  color: white !important;
+  border-radius: 20px !important;
+  //padding: 5px !important;
+  margin-left: 75%;
+  height: 30px;
+}
+
+#comment-area {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  outline: 0;
+  cursor: text;
+  resize: none;
+  border-bottom: solid 1px rgba(230, 230, 230, 0.658);
+}
+
+#comment-section {
+  //background-color: red;
+  text-align: left;
+  padding-left: 10px;
+  margin-left: 150px;
+}
+
+#add-comment-section {
+  width: 45%;
+  margin-left: 150px;
+}
+
+#comment-header-section {
+
+}
+
+@media screen and (max-width: 800px) {
+  #comment-section, #add-comment-section, #comment-button {
+    margin-left: 0; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+
+  #add-comment-section {
+    width: 100%;
+  }
+}

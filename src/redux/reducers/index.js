@@ -4,7 +4,7 @@ import registerReducer from './RegisterReducer/registerReducer';
 import verifyReducer from './VerifyRegristrationReducer/verifyRegistrationReducer';
 import resetPasswordReducer from './resetPasswordReducer/resetpasswordreducer';
 import newPasswordReducer from './newPasswordReducer/newPasswordreducer';
-import addCommentReducer from './CommentReducers/addCommetReducer';
+import addCommentReducer from './CommentReducers/addCommentReducer';
 import allCommentsReducer from './CommentReducers/allCommentsReducer';
 
 const rootReducer = combineReducers({

@@ -11,8 +11,8 @@ function* loginWorker({ payload }) {
       payload: { user: response.data.user },
     });
     const { token } = response.data.user;
-    localStorage.setItem('accessToken', token);
-    localStorage.setItem('user', response.data.user);
+    localStorage.setItem('accessToken', JSON.stringify(token));
+    localStorage.setItem('user', JSON.stringify(response.data.user));
   } catch (error) {
     yield put({
       type: types.LOGIN_ERROR,

@@ -1,16 +1,14 @@
 import { put, call, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import {
-  ADD_COMMENT_START,
-  ADD_COMMENT_SUCCESS,
-  ADD_COMMENT_FAIL,
+  GET_COMMENTS_START,
+  GET_COMMENTS_SUCCESS,
+  GET_COMMENTS_FAIL,
 } from '../../actions/CommentActions/types';
 
-
-function* addCommentWorker({ payload }) {
+function* getCommentsWorker({ payload }) {
   const token = JSON.parse(localStorage.getItem('accessToken'));
-  // already exisitng article slug
-  const articleSlug = 'dc-comics';
+  const articleSlug = payload.slug;
   const config = {
     headers: {
       Authorization: `token ${token}`,
@@ -18,25 +16,25 @@ function* addCommentWorker({ payload }) {
   };
   try {
     const response = yield call(
-      axios.post,
+      axios.get,
       `https://ah-robotics-staging.herokuapp.com/api/v1/articles/${articleSlug}/comments/`,
       { comment: payload },
       { headers: config.headers },
 );
     yield put({
-      type: ADD_COMMENT_SUCCESS,
-      payload: { comment: response.data },
+      type: GET_COMMENTS_SUCCESS,
+      payload: { comments: response.data },
     });
   } catch (error) {
     yield put({
-      type: ADD_COMMENT_FAIL,
-      payload: { errors: error.response.data },
+      type: GET_COMMENTS_FAIL,
+      payload: { errors: error.response.data.errors },
     });
   }
 }
 
-function* addCommentWatcher() {
-  yield takeEvery(ADD_COMMENT_START, addCommentWorker);
+function* getCommentsWatcher() {
+  yield takeEvery(GET_COMMENTS_START, getCommentsWorker);
 }
 
-export default addCommentWatcher;
+export default getCommentsWatcher;

@@ -50,16 +50,16 @@ export const deleteCommentFail = comment => ({
 
 // GET COMMENTS ACTIONS
 export const getArticleComments = comment => ({
-      type: types.UPDATE_COMMENT_START,
+      type: types.GET_COMMENTS_START,
       payload: comment,
 });
 
 export const getCommentsSuccess = comment => ({
-      type: types.UPDATE_COMMENT_SUCCESS,
+      type: types.GET_COMMENTS_SUCCESS,
       payload: comment,
 });
 
 export const getCommentsFail = comment => ({
-      type: types.UPDATE_COMMENT_FAIL,
+      type: types.GET_COMMENTS_FAIL,
       payload: comment,
 });
