@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   profileData: {},
-  Error: {},
+  error: {},
   profileUpdate: false,
   isLoading: false,
   Followers: 0,
