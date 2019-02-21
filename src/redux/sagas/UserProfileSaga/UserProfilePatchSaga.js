@@ -2,9 +2,15 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import * as types from '../../actions/userProfileActions/types';
 
-function* userProfilePatchSaga(payload) {
-  const { username, token, updateData } = payload;
-  console.log(payload);
+function* userProfilePatchSaga({ payload }) {
+  console.log(payload.token);
+  const { username, token, data } = payload;
+
+// test option
+  const newDataNoImage = {};
+  newDataNoImage.bio = data.bio;
+  console.log(newDataNoImage, token);
+
 
   const config = {
     headers: {
@@ -12,7 +18,7 @@ function* userProfilePatchSaga(payload) {
     },
   };
   try {
-    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, updateData, config);
+    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, newDataNoImage, config);
     yield put({
       type: types.PROFILE_PATCH_SUCCESS,
       payload: response.data,

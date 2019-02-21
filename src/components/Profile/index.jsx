@@ -15,9 +15,9 @@ const user = profile;
                   <Image id="sample-img" src={imglove} size='medium' circular className="App-logo" color='red' alt="logo" />
                 </Grid.Column>
               <Grid.Column width={6}>
-                  <Header id='sample-header' as='h3'>{user.profile && user.profile.username }</Header>
+                  <Header id='sample-header' as='h3'><b>Username: </b>{user.profile && user.profile.username }</Header>
                   <p>
-                      {user.profile && user.profile.bio }
+                     <b>Bio: </b> {user.profile && user.profile.bio }
                   </p>        
                 </Grid.Column>    
             </Grid.Row>

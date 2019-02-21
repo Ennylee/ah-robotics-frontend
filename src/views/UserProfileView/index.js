@@ -5,6 +5,8 @@ import ProfileComponent from '../../components/Profile';
 import { profileData } from '../../redux/actions/userProfileActions/actions';
 
 class ProfileView extends Component {
+  state = { }
+
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = JSON.parse(localStorage.getItem('accessToken'));
@@ -20,7 +22,6 @@ class ProfileView extends Component {
 
   }
 
-  state = { }
 
   render() {
     const { profile } = this.props;

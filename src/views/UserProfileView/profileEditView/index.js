@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ProfileEditComponent from '../../../components/Profile/ProfileEdit';
 import { profileUpdate } from '../../../redux/actions/userProfileActions/actions';
-
 
 class profileEditView extends Component {
   constructor(props) {
@@ -14,31 +14,42 @@ class profileEditView extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    nextProps.history.push('/profiles');
+  }
+
   onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
-  handleEdit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { profileUpdate: profileUpdateAction } = this.props;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    const { username } = user;
     const updateData = {};
     updateData.data = this.state;
-    updateData.token = '';
-    updateData.username = 'username';
+    updateData.token = token;
+    updateData.username = username;
     profileUpdateAction(updateData);
   }
 
   render() {
+    const { profile } = this.props;
     return (
-      <ProfileEditComponent onChange={this.onChange} handleEdit={this.handleEdit} />
+      <ProfileEditComponent profile={profile} handleSubmit={this.handleSubmit} onChange={this.onChange} />
     );
   }
 }
+profileEditView.propTypes = {
+  profile: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
-  editProfile: state.profileEdit,
+  profile: state.userProfile,
 });
 
 const mapDispatchToprops = dispatch => bindActionCreators({
