@@ -3,17 +3,16 @@ import axios from 'axios';
 import * as types from '../../actions/userProfileActions/types';
 
 function* userProfilePatchSaga(payload) {
-  const payloadData = payload.payload;
-  const { username } = payloadData;
-  const { token } = payloadData;
-  const { profileForm } = payloadData;
+  const { username, token, updateData } = payload;
+  console.log(payload);
+
   const config = {
     headers: {
       Authorization: `token ${token}`,
     },
   };
   try {
-    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, profileForm, config);
+    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, updateData, config);
     yield put({
       type: types.PROFILE_PATCH_SUCCESS,
       payload: response.data,

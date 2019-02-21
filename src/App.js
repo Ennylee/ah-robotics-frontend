@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import HomeView from './views/HomeView';
 import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
 import Error from './components/Error/index';
-import ResetPasswordView from './views/ResetPasswordView';
 import NavigationComponent from './views/NavigationView';
-import NewPasswordView from './views/NewPasswordView';
 import VerifyRegistrationView from './views/VerifyRegistrationView/index';
 import ProfileView from './views/UserProfileView';
 import profileEditView from './views/UserProfileView/profileEditView';

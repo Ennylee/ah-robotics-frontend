@@ -4,16 +4,14 @@ import loginWatcher from './LoginSaga/loginSaga';
 import watchRegister from './RegisterSaga/RegisterSaga';
 import watchVerify from './VerifyRegistrationSaga/VerifyRegistrationSaga';
 import watchuserProfile from './UserProfileSaga/UserProfileSaga';
-import watchNewPassword from './newPasswordSaga/newPassword';
-import watchResetPassword from './resetPasswordSaga/resetPassword';
+import watchuserProfilePatch from './UserProfileSaga/UserProfilePatchSaga';
 
 export default function* rootSaga() {
   yield all([
     fork(loginWatcher),
     fork(watchRegister),
     fork(watchVerify),
-    fork(watchResetPassword),
-    fork(watchNewPassword),
     fork(watchuserProfile),
+    fork(watchuserProfilePatch),
   ]);
 }
