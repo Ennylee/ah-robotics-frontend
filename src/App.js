@@ -9,27 +9,24 @@ import ResetPasswordView from './views/ResetPasswordView';
 import NavigationComponent from './views/NavigationView';
 import NewPasswordView from './views/NewPasswordView';
 import VerifyRegistrationView from './views/VerifyRegistrationView/index';
+import OneArticleView from './views/OneArticleView';
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <NavigationComponent />
-          <Switch>
-            <Route path="/" component={HomeView} exact />
-            <Route path="/login" component={LoginView} exact />
-            <Route path="/register" component={RegisterView} />
-            <Route path="/verify/:token" component={VerifyRegistrationView} />
-            <Route path="/resetpassword" component={ResetPasswordView} />
-            <Route path="/reset_password/:token" component={NewPasswordView} />
-            <Route component={Error} />
-
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <NavigationComponent />
+      <Switch>
+        <Route path="/" component={HomeView} exact />
+        <Route path="/login" component={LoginView} exact />
+        <Route path="/register" component={RegisterView} />
+        <Route path="/ratings" component={OneArticleView} />
+        <Route path="/verify/:token" component={VerifyRegistrationView} />
+        <Route path="/resetpassword" component={ResetPasswordView} />
+        <Route path="/reset_password/:token" component={NewPasswordView} />
+        <Route component={Error} />
+      </Switch>
+    </div>
+  </BrowserRouter>
+);
 
 export default App;

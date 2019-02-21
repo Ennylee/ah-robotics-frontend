@@ -4,6 +4,7 @@ import registerReducer from './RegisterReducer/registerReducer';
 import verifyReducer from './VerifyRegristrationReducer/verifyRegistrationReducer';
 import resetPasswordReducer from './resetPasswordReducer/resetpasswordreducer';
 import newPasswordReducer from './newPasswordReducer/newPasswordreducer';
+import ratings from './RatingsReducer/ratingsReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   verifyUser: verifyReducer,
   resetPassword: resetPasswordReducer,
   newPassword: newPasswordReducer,
+  ratings,
 });
 
 export default rootReducer;

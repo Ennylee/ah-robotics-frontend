@@ -17,6 +17,9 @@ const NavigationComponent = () => (
         <NavLink to="/profiles">
           <Menu.Item name="Profile" />
         </NavLink>
+        <NavLink to="/ratings">
+          <Menu.Item name="Ratings" />
+        </NavLink>
         <Menu.Menu position="right">
           <NavLink to="/login">
             <Menu.Item
