@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { NewPasswordComponent } from '../../components/newPassword/index';
+import NewPasswordComponent from '../../components/newPassword/index';
 import { newPasswordStart } from '../../redux/actions/newPasswordActions/actions';
 
-export class NewPasswordView extends Component {
+class NewPasswordView extends Component {
   state = {
     password: '',
   };

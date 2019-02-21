@@ -14,6 +14,7 @@ class profileEditView extends Component {
     };
   }
 
+
   componentWillReceiveProps(nextProps) {
     nextProps.history.push('/profiles');
   }
@@ -22,7 +23,7 @@ class profileEditView extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-  }
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -35,17 +36,25 @@ class profileEditView extends Component {
     updateData.token = token;
     updateData.username = username;
     profileUpdateAction(updateData);
-  }
+  };
 
   render() {
     const { profile } = this.props;
     return (
-      <ProfileEditComponent profile={profile} handleSubmit={this.handleSubmit} onChange={this.onChange} />
+      <ProfileEditComponent
+        profile={profile}
+        handleSubmit={this.handleSubmit}
+        onChange={this.onChange}
+      />
     );
   }
 }
 profileEditView.propTypes = {
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.shape({}).isRequired,
+  profileUpdate: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({

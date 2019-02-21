@@ -3,22 +3,18 @@ import axios from 'axios';
 import * as types from '../../actions/userProfileActions/types';
 
 function* userProfilePatchSaga({ payload }) {
-  console.log(payload.token);
   const { username, token, data } = payload;
 
-// test option
-  const newDataNoImage = {};
-  newDataNoImage.bio = data.bio;
-  console.log(newDataNoImage, token);
-
-
+  const form = new FormData();
+  form.append('image', data.image);
+  form.append('bio', data.bio);
   const config = {
     headers: {
       Authorization: `token ${token}`,
     },
   };
   try {
-    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, newDataNoImage, config);
+    const response = yield call(axios.patch, `https://ah-robotics-staging.herokuapp.com/api/v1/profiles/${username}/`, form, config);
     yield put({
       type: types.PROFILE_PATCH_SUCCESS,
       payload: response.data,
@@ -32,9 +28,9 @@ function* userProfilePatchSaga({ payload }) {
 }
 
 function* watchuserProfilePatch() {
-    yield takeEvery(
-      types.PROFILE_PATCH_START, userProfilePatchSaga,
+  yield takeEvery(
+    types.PROFILE_PATCH_START, userProfilePatchSaga,
   );
-  }
+}
 
-  export default watchuserProfilePatch;
+export default watchuserProfilePatch;

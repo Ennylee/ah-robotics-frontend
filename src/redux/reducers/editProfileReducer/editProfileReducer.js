@@ -9,6 +9,8 @@ import {
     error: {},
     profileUpdate: false,
     isLoading: false,
+    Followers: 0,
+    Following: 0,
   };
 
   const editProfileReducer = (state = initialState, action) => {
@@ -17,7 +19,6 @@ import {
         return { ...state, profileData: action.payload, isLoading: true };
       }
       case PROFILE_PATCH_SUCCESS: {
-          console.log(action.payload);
         return { ...action.payload, isLoading: false };
       }
       case PROFILE_PATCH_ERROR: {

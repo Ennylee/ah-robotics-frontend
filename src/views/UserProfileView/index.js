@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import ProfileComponent from '../../components/Profile';
 import { profileData } from '../../redux/actions/userProfileActions/actions';
 
 class ProfileView extends Component {
-  state = { }
+  state = { };
 
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -22,12 +23,13 @@ class ProfileView extends Component {
 
   }
 
-
   render() {
     const { profile } = this.props;
-    const profileData = profile.profile;
+    const profileData1 = profile.profile;
     return (
-      profile.isLoading ? <h1>'loading'</h1> : <ProfileComponent profile={profileData} />
+      profile.isLoading
+          ? <h1>loading</h1>
+          : <ProfileComponent profile={profileData1} />
     );
   }
 }
@@ -39,5 +41,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   profileData,
 }, dispatch);
+
+ProfileView.propTypes = {
+  profile: PropTypes.shape({}).isRequired,
+  profileData: PropTypes.shape({}).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);

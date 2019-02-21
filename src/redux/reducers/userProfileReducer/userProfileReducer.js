@@ -1,5 +1,4 @@
 import {
-  PROFILE_DATA,
   PROFILE_ERROR,
   PROFILE_PATCH_START,
   PROFILE_PATCH_SUCCESS,
@@ -18,9 +17,6 @@ const initialState = {
 
 const userProfileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PROFILE_DATA: {
-      return { ...state, profileData: action.payload, isLoading: true };
-    }
     case PROFILE_DATA_SUCCESS: {
       return { ...action.payload, isLoading: false };
     }
