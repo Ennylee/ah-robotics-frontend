@@ -35,7 +35,7 @@ describe('resetPassword reducer tests', () => {
     expect(userProfileReducer(null, {
       type: PROFILE_PATCH_START,
       payload: {},
-    })).toEqual({ "isLoading": true, "profileData": {},  });
+    })).toEqual({ isLoading: true, profileData: {} });
   });
   it('it should show error on profile submit', () => {
     expect(userProfileReducer(null, {
