@@ -15,6 +15,5 @@ export default function* rootSaga() {
     fork(watchResetPassword),
     fork(watchNewPassword),
     fork(watchSelectRating),
-
   ]);
 }
